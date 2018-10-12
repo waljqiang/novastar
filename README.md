@@ -12,7 +12,7 @@ Open API SDK
 * 通过Dispatch类调用各API方法
 * 比如获取用户标签:
 ```PHP
-	require_once dirname(__DIR__) . "/vendor/autoload.php";
+	require_once __DIR__ . "/vendor/autoload.php";
 	use NovaStar\Api\Dispatch;
 	use Doctrine\Common\Cache\FilesystemCache;
 	use NovaStar\Api\Exceptions\HttpException;
@@ -21,10 +21,10 @@ Open API SDK
 			"app_id" => "3f6deaafb426e72dc88addda6423190ca18efd7287a1e311417da7ee",
 			"app_secret" => "E478IXfjQ5Exf6kCCMEIuyvFKSkRdimWxSmQvByV",
 			"scope" => "",
-			"cache" => new FilesystemCache(dirname(dirname(__FILE__)) . '/runtime/cache'),
+			"cache" => new FilesystemCache(dirname(__DIR__ . '/runtime/cache'),
 			"log" => [
 				"level" => "ERROR",
-				"path" => dirname(dirname(__FILE__)) . "/runtime/log/novastar.log"
+				"path" => __DIR__ . "/runtime/log/novastar.log"
 			]
 		]
 	);
