@@ -4,7 +4,7 @@ NovaStar SDK
 Open API SDK
 -------------
 #安装
-composer require novastar/auth-api
+* composer require novastar/auth-api
 
 #使用方法
 * 在项目中引入SDK自动加载文件
