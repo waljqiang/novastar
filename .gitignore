@@ -1,0 +1,4 @@
+.idea
+auth-api/runtime/*
+auth-api/tests/runtime/*
+auth-api/tests/report/*
