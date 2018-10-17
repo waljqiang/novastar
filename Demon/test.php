@@ -1,5 +1,5 @@
 <?php
-	//http://www.novaicare.local:8060/auth-api/Demon/test.php
+	//http://www.novaicare.local:8060/Demon/test.php
 	require_once dirname(__DIR__) . "/vendor/autoload.php";
 	use NovaStar\Api\Dispatch;
 	use Doctrine\Common\Cache\FilesystemCache;

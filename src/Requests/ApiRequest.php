@@ -23,7 +23,7 @@ class ApiRequest extends AbstractRequest{
         return $this->parseJSON('get',[self::API_USER_TAGS]);
     }
 
-    public function getScreenList($params){
+    public function getScreenList($params = []){
         return $this->parseJSON('post',[self::API_SCREEN_LIST,$params]);
     }
 
