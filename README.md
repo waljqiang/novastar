@@ -46,10 +46,12 @@ Open API SDK
 * 获取显示屏列表
 	* getScreenList(["status"=>2,"label"=>222,"search"=>"测试屏"])
 	* 参数说明
-		|参数名|必选|类型|说明|
-		|:----    |:---|:----- |-----   |
-		|status |false  |int |屏体状态1：在线2：离线3：告警4：故障 |
-		|label |false  |int |标签ID |
+
+		|参数名|必选|类型|默认值|说明|
+		|:----    |:---|:----- |:--- |:-----   |
+		|status |false  |int |无 |屏体状态1：在线2：离线3：告警4：故障 |
+		|label |false  |int |无 |标签ID |
+		|search |false |string |无 |搜索关键字,支持屏体名称和地址查找 |
 * 获取单个屏体点检信息
 	* getSpotChecks(["sid"=>"1111"])
 * 获取单个屏体监控数据
