@@ -21,7 +21,7 @@ Open API SDK
 			"app_id" => "3f6deaafb426e72dc88addda6423190ca18efd7287a1e311417da7ee",
 			"app_secret" => "E478IXfjQ5Exf6kCCMEIuyvFKSkRdimWxSmQvByV",
 			"scope" => "",
-			"cache" => new FilesystemCache(dirname(__DIR__ . '/runtime/cache'),
+			"cache" => new FilesystemCache(dirname(__DIR__ . '/runtime/cache')),
 			"log" => [
 				"level" => "ERROR",
 				"path" => __DIR__ . "/runtime/log/novastar.log"
