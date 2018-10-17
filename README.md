@@ -44,15 +44,15 @@ Open API SDK
 * 获取用户标签列表
 	* getTags()
 * 获取显示屏列表
-	* getScreenList()
+	* getScreenList(["status"=>2,"label"=>222,"search"=>"测试屏"])
 * 获取单个屏体点检信息
-	* getSpotChecks()
+	* getSpotChecks(["sid"=>"1111"])
 * 获取单个屏体监控数据
-	* getMonitors()
+	* getMonitors(["sid"=>"1111"])
 * 获取屏体监控图片-原始图
-	* getImages()
+	* getImages(["sid"=>["1111"]])
 * 获取屏体监控图片-缩略图
-	* getThumbnails()
+	* getThumbnails(["sid"=>["1111"]])
 
 #单元测试
 * 进入tests目录
