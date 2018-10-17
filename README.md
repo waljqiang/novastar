@@ -68,8 +68,14 @@ Open API SDK
 		|sid |true  |string |无 |屏体ID |
 * 获取屏体监控图片-原始图
 	* getImages(["sid"=>["1111"]])
+	* 参数说明
+
+		|sid |true  |array |无 |屏体ID列表 |
 * 获取屏体监控图片-缩略图
 	* getThumbnails(["sid"=>["1111"]])
+	* 参数说明
+
+		|sid |true  |array |无 |屏体ID列表 |
 
 #单元测试
 * 进入tests目录
