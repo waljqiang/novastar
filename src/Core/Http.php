@@ -36,14 +36,6 @@ class Http
      */
     const VER = '1.0';
     /**
-     * 认证服务地址
-     */
-    const AUTH_SERVER = 'http://192.168.33.11:8335/';
-    /**
-     * api服务地址
-     */
-    const API_SERVER = 'http://www.novaicare.local/';
-    /**
      * Http client.
      *
      * @var HttpClient
@@ -347,10 +339,10 @@ class Http
     }
 
     public function getAuthServer(){
-        return self::AUTH_SERVER;
+        return $this->dispatch['config']['auth_server'];
     }
 
     public function getApiServer(){
-        return self::API_SERVER;
+        return $this->dispatch['config']['api_server'];
     }
 }
