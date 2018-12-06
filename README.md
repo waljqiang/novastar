@@ -9,7 +9,8 @@ Open API SDK
 #使用方法
 * 在项目中引入SDK自动加载文件
 * 实例NovaStar\Api\Dispatch类
-	* 实例化NovaStar\Api\Dispatch类的时候，要注意node的配置，node为对应的节点配置，各节点对应配置如下
+	* 实例化NovaStar\Api\Dispatch类的时候，要注意node的配置，node为对应的节点配置，各节点对应配置如下:
+	
 		|服务器节点|value|
 		|:----    |:---|
 		|本地 |local  |
