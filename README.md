@@ -9,19 +9,39 @@ Open API SDK
 #使用方法
 * 在项目中引入SDK自动加载文件
 * 实例NovaStar\Api\Dispatch类
-	* 实例化NovaStar\Api\Dispatch类的时候，要注意node的配置，node为对应的节点配置，各节点对应配置如下:
-	
+	* 实例化NovaStar\Api\Dispatch类时，参数说明
+
+		|参数名|必选|类型|默认值|说明|
+		|:----    |:---|:----- |:--- |:-----   |
+		|node |true  |string |无 |服务器节点,具体值请看node节点说明 |
+		|app_id |true  |string |无 |客户端ID |
+		|app_secret |true |string |无 |客户端secret |
+		|scope |false |string |无 |接口权限,默认为全部,多个权限用","隔开,具体参考权限对照表|
+		|cache |true |class |无 |目前实现了FilesystemCache系统，其他cache需用户自行实现 |
+		|log |true |string |无 |日志目录 |
+	* node节点说明
+
 		|服务器节点|value|
 		|:----    |:---|
 		|本地 |local  |
 		|新加坡节点 |sg  |
+	* 权限对照表
+
+		|scope|接口|
+		|:----    |:---|
+		|user-tags |获取用户标签列表  |
+		|screen-lists |获取用户屏体列表  |
+		|screen-spotcheck |获取用户单个屏体点检信息  |
+		|screen-monitor |获取用户单个屏体监控数据  |
+		|screen-images |获取屏体监控图片(原始图)-多摄像机  |
+		|screen-thumbnails |获取用户屏体监控图片(缩略图)-多摄像机  |
 * 通过Dispatch类调用各API方法
 * 比如获取用户标签:
 ```PHP
 	require_once __DIR__ . "/vendor/autoload.php";
 	use NovaStar\Api\Dispatch;
 	use Doctrine\Common\Cache\FilesystemCache;
-	use NovaStar\Api\Exceptions\HttpExcept提高ion;
+	use NovaStar\Api\Exceptions\HttpException;
 	$apiDispatch = new Dispatch(
 		[
 			"node" => "local",
