@@ -9,15 +9,21 @@ Open API SDK
 #使用方法
 * 在项目中引入SDK自动加载文件
 * 实例NovaStar\Api\Dispatch类
+	* 实例化NovaStar\Api\Dispatch类的时候，要注意node的配置，node为对应的节点配置，各节点对应配置如下
+		|服务器节点|value|
+		|:----    |:---|
+		|本地 |local  |
+		|新加坡节点 |sg  |
 * 通过Dispatch类调用各API方法
 * 比如获取用户标签:
 ```PHP
 	require_once __DIR__ . "/vendor/autoload.php";
 	use NovaStar\Api\Dispatch;
 	use Doctrine\Common\Cache\FilesystemCache;
-	use NovaStar\Api\Exceptions\HttpException;
+	use NovaStar\Api\Exceptions\HttpExcept提高ion;
 	$apiDispatch = new Dispatch(
 		[
+			"node" => "local",
 			"app_id" => "3f6deaafb426e72dc88addda6423190ca18efd7287a1e311417da7ee",
 			"app_secret" => "E478IXfjQ5Exf6kCCMEIuyvFKSkRdimWxSmQvByV",
 			"scope" => "",

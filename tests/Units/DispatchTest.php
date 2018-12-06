@@ -19,7 +19,7 @@ class DispatchTest extends TestCase{
 	 */
 	public static function setUpBeforeClass(){
 		self::$instance = new Dispatch(
-			[
+			[	'node' => 'local',
 				'app_id' => self::APP_ID,
 				'app_secret' => self::SECRET,
 				'cache' => new FilesystemCache(dirname(dirname(__FILE__)) . '/runtime/cache'),

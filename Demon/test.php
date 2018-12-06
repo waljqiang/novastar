@@ -6,6 +6,7 @@
 	use NovaStar\Api\Exceptions\HttpException;
 	$apiDispatch = new Dispatch(
 		[
+			"node" => "local",
 			"app_id" => "3f6deaafb426e72dc88a8fde64201959f4dff6258aa2eb134770a4",
 			"app_secret" => "Kh0uvTxt2V0cbxUM1EotpgSXtNYljuhhZzMdT9fr
 			",
