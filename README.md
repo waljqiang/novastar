@@ -17,14 +17,15 @@ Open API SDK
 		|app_id |true  |string |无 |客户端ID |
 		|app_secret |true |string |无 |客户端secret |
 		|scope |false |string |无 |接口权限,默认为全部,多个权限用","隔开,具体参考权限对照表|
-		|cache |true |class |无 |目前实现了FilesystemCache系统，其他cache需用户自行实现 |
+		|cache |true |class |无 |缓存类，系统提供doctrine/cache中缓存类,用户也可基于此实现自己的缓存类|
 		|log |true |string |无 |日志目录 |
-	* node节点说明
+	* node节点说明,目前只有新加坡节点可用
 
 		|服务器节点|value|
 		|:----    |:---|
-		|本地 |local  |
+		|中国节点 |cn  |
 		|新加坡节点 |sg  |
+		|美国节点 |us  |
 	* 权限对照表
 
 		|scope|接口|

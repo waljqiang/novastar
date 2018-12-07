@@ -10,13 +10,13 @@
 namespace NovaStar\Api\Core;
 
 use \Carbon\Carbon;
-use HttpException;
+use \NovaStar\Api\Exceptions\HttpException;
 use \GuzzleHttp\HandlerStack;
 use \GuzzleHttp\Client as HttpClient;
-use NovaStar\Api\Utils\Signature;
+use \NovaStar\Api\Utils\Signature;
 use \Psr\Http\Message\ResponseInterface;
-use NovaStar\Api\Core\Config;
-use NovaStar\Api\Dispatch;
+use \NovaStar\Api\Core\Config;
+use \NovaStar\Api\Dispatch;
 
 /**
  * Class Http.

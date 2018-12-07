@@ -6,7 +6,9 @@ use \GuzzleHttp\Middleware;
 use \GuzzleHttp\Psr7\Uri;
 use \Psr\Http\Message\RequestInterface;
 use \Psr\Http\Message\ResponseInterface;
-use NovaStar\Api\Exceptions\HttpException;
+use \NovaStar\Api\Exceptions\HttpException;
+use \GuzzleHttp\Exception\ConnectException;
+use \GuzzleHttp\Exception\ClientException;
 /**
  * Class AbstractAPI.
  */
@@ -117,13 +119,15 @@ abstract class AbstractRequest
             $token = $this->accessToken->getToken();
             $this->logger->debug('access_token is . [' . $token . ']');
         }catch(\Exception $e){
-            $body = json_decode($e->getResponse()->getBody(),true);
-            $message = $body['error'] . ',' . $body['message'];
-            throw new HttpException($message);
+            $this->tansHttpException($e);
         }
         $args[0] = $http->getApiServer() . $args[0];
         $args[1][$field] = $token;
-        $contents = $http->parseJSON(call_user_func_array([$http, $method], $args));
+        try{
+            $contents = $http->parseJSON(call_user_func_array([$http, $method], $args));
+        }catch(\Exception $e){
+            $this->tansHttpException($e);
+        }
         $this->checkAndThrow($contents);
         return $contents;
     }
@@ -181,6 +185,30 @@ abstract class AbstractRequest
             $message = $contents['message'] . ',' . $contents['hint'];
             $this->logger->error('response error is [' . var_export($contents,true) . ']');
             throw new HttpException($message, $contents['errorCode']);
+        }
+    }
+
+    protected function tansHttpException($e){
+        if($e instanceof ConnectException){
+            throw new HttpException('The server of this code is breakdown',HttpException::NODEBAD);
+        }elseif($e instanceof ClientException){
+            $body = json_decode($e->getResponse()->getBody(),true);
+            $message = $body['error'] . ',' . $body['message'];
+            switch(strtoupper($body['error'])){
+                case 'INVALID_CLIENT':
+                    $code = HttpException::INVALID_CLIENT;
+                    break;
+                case 'INVALID_SCOPE':
+                    $code = HttpException::INVALID_SCOPE;
+                    break;
+                default:
+                    $code = HttpException::UNKNOWN;
+            }
+            throw new HttpException($message, $code);
+        }else{
+            $body = json_decode($e->getResponse()->getBody(),true);
+            $message = $body['error'] . ',' . $body['message'];
+            throw new HttpException($message,$e->getCode());
         }
     }
 }

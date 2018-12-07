@@ -8,7 +8,7 @@
 
 namespace NovaStar\Api\Core;
 
-use NovaStar\Auth\Exceptions\HttpException;
+use \NovaStar\Api\Exceptions\HttpException;
 
 /**
  * Class AccessToken.
@@ -63,6 +63,12 @@ class AccessToken{
      * @var string
      */
     protected $prefix = 'novaauth.access_token';
+
+    /**
+     * 服务器节点
+     * @var string
+     */
+    protected $node;
     // API
     const API_TOKEN = 'oauth/token';
 
@@ -77,6 +83,7 @@ class AccessToken{
         $this->secret = $http->getSecret();
         $this->scope = $http->getScope();
         $this->cache = $http->getDispatch()->getCache();
+        $this->node = $http->getDispatch()->getNode();
         $this->setHttp($http);
     }
 
@@ -196,7 +203,8 @@ class AccessToken{
             'scope' => $this->scope
         ];
         $http = $this->getHttp();
-        $token = $http->parseJSON($http->json($http->getAuthServer() . self::API_TOKEN, $params));
+        $response = $this->getHttp()->json($http->getAuthServer() . self::API_TOKEN, $params);
+        $token = $http->parseJSON($response);
         if (isset($token['error'])) {
             throw new HttpException('Request AccessToken fail. response: ' . json_encode($token, JSON_UNESCAPED_UNICODE));
         }
@@ -244,7 +252,7 @@ class AccessToken{
      * @return $this
      */
     public function setCacheKey($cacheKey){
-        $this->cacheKey = $cacheKey;
+        $this->cacheKey = $this->node . $cacheKey;
         return $this;
     }
 
@@ -255,8 +263,9 @@ class AccessToken{
      */
     public function getCacheKey(){
         if (is_null($this->cacheKey)) {
-            return $this->prefix . $this->appId;
+            return $this->prefix . $this->node . $this->appId;
         }
         return $this->cacheKey;
     }
+
 }

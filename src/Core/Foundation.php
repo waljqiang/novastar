@@ -58,4 +58,12 @@ class Foundation extends Container{
         return $this['logger'];
     }
 
+    public function getNode(){
+        return $this['config']['node'];
+    }
+
+    public function getConfig(){
+        return $this['config'];
+    }
+
 }

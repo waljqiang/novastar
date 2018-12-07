@@ -6,10 +6,9 @@
 	use NovaStar\Api\Exceptions\HttpException;
 	$apiDispatch = new Dispatch(
 		[
-			"node" => "local",
-			"app_id" => "3f6deaafb426e72dc88a8fde64201959f4dff6258aa2eb134770a4",
-			"app_secret" => "Kh0uvTxt2V0cbxUM1EotpgSXtNYljuhhZzMdT9fr
-			",
+			"node" => "sg",
+			"app_id" => "3f6deaafb426e72dc88add896521425ffa83f277dfafe4101671a3",
+			"app_secret" => "uPTnzCzG65Z8KwV7YIYMllRQftrkYqs8aY0TC2xh",
 			"scope" => "",
 			"cache" => new FilesystemCache(dirname(dirname(__FILE__)) . '/runtime/cache'),
 			"log" => [
@@ -26,8 +25,10 @@
 		print_r($tags);
 		echo '</pre>';
 	}catch(HttpException $e){
+		var_dump($e->getCode());
 		var_dump($e->getMessage());
 	}
+
 	//获取显示屏列表
 	try{
 		$screenList = $apiDispatch->getScreenList(["status"=>2,"label"=>222,"search"=>"测试屏"]);
@@ -36,6 +37,7 @@
 		print_r($screenList);
 		echo '</pre>';
 	}catch(HttpException $e){
+		var_dump($e->getCode());
 		var_dump($e->getMessage());
 	}
 	//获取单个屏体点检信息
@@ -46,6 +48,7 @@
 		print_r($spotInfos);
 		echo '</pre>';
 	}catch(HttpException $e){
+		var_dump($e->getCode());
 		var_dump($e->getMessage());
 	}
 	//获取单个屏体监控数据
@@ -56,6 +59,7 @@
 		print_r($monitors);
 		echo '</pre>';
 	}catch(HttpException $e){
+		var_dump($e->getCode());
 		var_dump($e->getMessage());
 	}
 	//获取屏体监控图片-原始图
@@ -66,6 +70,7 @@
 		print_r($images);
 		echo '</pre>';
 	}catch(HttpException $e){
+		var_dump($e->getCode());
 		var_dump($e->getMessage());
 	}
 	//获取屏体监控图片-缩略图
@@ -76,5 +81,6 @@
 		print_r($thumbnails);
 		echo '</pre>';
 	}catch(HttpException $e){
+		var_dump($e->getCode());
 		var_dump($e->getMessage());
 	}

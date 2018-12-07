@@ -11,6 +11,7 @@ class Config extends Collection{
             die("The node is not exsist!");
         }
         $node = require_once $file;
+        $config['node'] = $config["node"];
     	$config['auth_server'] = $node["AUTH_SERVER"];
     	$config['api_server'] = $node["API_SERVER"];
     	parent::__construct($config);
