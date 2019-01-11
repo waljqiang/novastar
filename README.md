@@ -45,7 +45,7 @@ Open API SDK
 	use NovaStar\Api\Exceptions\HttpException;
 	$apiDispatch = new Dispatch(
 		[
-			"node" => "local",
+			"node" => "cn",
 			"app_id" => "3f6deaafb426e72dc88addda6423190ca18efd7287a1e311417da7ee",
 			"app_secret" => "E478IXfjQ5Exf6kCCMEIuyvFKSkRdimWxSmQvByV",
 			"scope" => "",
