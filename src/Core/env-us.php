@@ -1,5 +1,5 @@
 <?php
 return [
-	"AUTH_SERVER" => "",
-	"API_SERVER" => ""
+	"AUTH_SERVER" => "http://auth-us.novaicare.com/",
+	"API_SERVER" => "http://care-us.novaicare.com/"
 ];
